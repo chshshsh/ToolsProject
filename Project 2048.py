@@ -8,4 +8,60 @@ import random
 import curses
 from itertools import chain
 
-class Action():
+class Action(object):
+    UP = 'up'
+    DOWN = 'down'
+    LEFT = 'left'
+    RIGHT = 'right'
+    RESTART = 'restart'
+    EXIT = 'exit'
+    
+    input_letter = [ord(ch) for ch in 'WSADRQwsadrq']
+    actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
+    actions_dict = dict(zip(input_letter, actions * 2)
+                    
+class Interface(object):
+    def __init__(self, width=4, height=4):
+        self.width = width
+        self.height = height
+        self.score = 0
+        self.highscore = 0
+        self.reset()  
+                                              
+    def reset(self):
+        self.score = 0                
+        self.spawn()
+        self.spawn()
+                      
+    def spawn(self):
+        number = random.choice([2,4])     
+        for i in range(self.width) and j in range(self.height)
+        self.field[i][j] = number     
+
+                      
+class main(stdscr):
+    def init():
+        #initiliza game
+        return 'Game'
+    
+    def game():
+        #Get action
+        #game interface 
+        #move and merge
+        #check win or lose 
+                
+    @property
+    def win(self):
+        if any(i >= self.win_value for i in row) for row in self.field
+        return 'You Win!'
+    
+    def canmove(self, direction):
+        
+    def lose(self):
+        #if not canmove
+        return 'Game Over!'
+    
+    def stop(self):
+        #if win or lose  
+        #action restart or exit
+
