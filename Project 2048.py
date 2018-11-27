@@ -19,6 +19,15 @@ class Action(object):
     input_letter = [ord(ch) for ch in 'WSADRQwsadrq']
     actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
     actions_dict = dict(zip(input_letter, actions * 2)
+    
+    def __init__(self,stdscr):
+        self.stdscr = stdscr
+    
+    def get_actions(self):
+        i = 'N'
+        if i not in self.actions_dict:
+            i = self.stdscr.getch()
+        return self.actions_dict[i]
                     
 class Interface(object):
     def __init__(self, width=4, height=4):
@@ -38,6 +47,34 @@ class Interface(object):
         for i in range(self.width) and j in range(self.height)
         self.field[i][j] = number     
 
+class Screen(object):
+    manual1 = '(W)Up (A)Left (S)Down (D)Right'
+    manual2 = '     (R)Restar (Q)Quit'
+    win_ = 'You Win!'
+    lose_ = 'Game Over!'
+    
+    def __init__(self, screen=None, grid=None, score=0, win=False, lose=False):
+        self.screen = screen
+        self.grid = grid
+        self.score = score
+        self.win = win
+        self.lose = lose
+        self.count = count
+    
+    def cast(self, string):
+        self.screen.addstr(string + '\n')
+    
+    def draw_row(self, row):
+        self.cast(''.join('|{: ^4}'.format(num) if num > 0 else '|   ' for num in row) + '|')
+
+    def draw(self):
+        self.screen.clear()
+        self.cast('SCORE:' + str(self.score))
+        for row in self.grid.cells:
+            self.cast('+----' * self.grid.size + '+')
+            self.draw_row(row)
+        self.cast('+----' * self.grid.size + '+')
+                         
                       
 class main(stdscr):
     def init():
@@ -65,3 +102,4 @@ class main(stdscr):
         #if win or lose  
         #action restart or exit
 
+                   
