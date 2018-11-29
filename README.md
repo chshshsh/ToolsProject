@@ -1,4 +1,4 @@
-# ToolsProject
+# Tools Project - Shuhui Chen, Tian Lei, and Yuheng Wang 
 
 # Game of 2048
 
@@ -15,5 +15,5 @@
 
 The game objective is:
 
-> - slide numbered tiles on a grid to combine them to create a tile with the number 2048, the name of the game :)
+> - Slide numbered tiles on a grid to combine them to create a tile with the number 2048, the name of the game :)
 > - Reach as high as possible on the scores
