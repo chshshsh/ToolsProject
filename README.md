@@ -1,8 +1,6 @@
-# Tools Project 
+# Tools Project - Game of 2048
 
 ## Group members: Shuhui Chen, Tian Lei, Edison (Yuheng) Wang 
-
-# Game of 2048
 
 
 ## Intro
