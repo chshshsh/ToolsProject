@@ -20,7 +20,7 @@ class Action(object):
     input_letter = [ord(ch) for ch in 'WSADRQwsadrq']
     actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
     actions_over = [UP, LEFT, DOWN, RIGHT]
-    actions_dict = dict(zip(input_letter, actions * 2)
+    actions_dict = dict(zip(input_letter, actions * 2))
     
     def __init__(self, stdscr):
         self.stdscr = stdscr
