@@ -20,3 +20,8 @@ The game objective is:
 
 > - Slide numbered tiles on a grid to combine them to create a tile with the number 2048, the name of the game :)
 > - Reach as high as possible on the scores
+
+## Run the File
+
+> - Please download the .py file and run it on Terminal using command code: 'python3 Project/ 2048.py'
+> - Enjoy the game!
