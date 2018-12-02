@@ -222,14 +222,15 @@ class main(stdscr):
         self.win = max(chain(*self.grid.cells)) >= self.win_num
         return self.win                        
     def canmove(self, direction):
-        
-    def lose(self):
-        #if not canmove
-        return 'Game Over!'
-
     
-    def stop(self):
-        #if win or lose  
-        #action restart or exit
+    @property
+    def is_over(self):
+        self.over = True
+        for move in self.action.actions_over:
+            if self.can_move(move):
+                self.over = False
+                return self.over
+        return self.over        
+    
 
                    
