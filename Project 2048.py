@@ -16,6 +16,7 @@ class Action(object):
     RESTART = 'restart'
     EXIT = 'exit'
     
+    #turn user's input into game actions 
     input_letter = [ord(ch) for ch in 'WSADRQwsadrq']
     actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
     actions_dict = dict(zip(input_letter, actions * 2)
@@ -23,50 +24,59 @@ class Action(object):
     def __init__(self,stdscr):
         self.stdscr = stdscr
     
+    #only do next movement until we get input in 'WASDRQwasdrq'
     def get_actions(self):
         i = 'N'
         if i not in self.actions_dict:
             i = self.stdscr.getch()
         return self.actions_dict[i]
                     
-class Interface(object):
-    def __init__(self, width=4, height=4):
-        self.width = width
-        self.height = height
-        self.score = 0
-        self.highscore = 0
+class Grid(object):
+    def __init__(self, size, parent):
+        self.size = size
+        self.cells = None
+        self.parent = parent
         self.reset()  
-                                              
+    
     def reset(self):
-        self.score = 0                
+        self.cells = [[0 for i in range(self.size)] for j in range(self.size)]
         self.spawn()
         self.spawn()
-                      
+    
+    #spawn random number in empty cells                    
     def spawn(self):
-        number = random.choice([2,4])     
-        for i in range(self.width) and j in range(self.height)
-        self.field[i][j] = number     
+        empty_cells = []
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.cells[i][j] == 0:
+                    empty_cells.append((i, j))
+        (i, j) = random.choice(empty_cells)
+        self.cells[i][j] = random.choice([2,4]) #could try different probability to generate 2 or 4
+    
 
 class Screen(object):
-    manual1 = '(W)Up (A)Left (S)Down (D)Right'
-    manual2 = '     (R)Restar (Q)Quit'
-    win_ = 'You Win!'
-    lose_ = 'Game Over!'
+    menu1 = '(W)up (S)down (A)left (D)right'
+    menu2 = '   (R)Restart (Q)Exit'
+    win_string = 'Congratulations Paul, You Did It!'
+    over_string = 'Sorry Paul, Please Try Again...'
     
-    def __init__(self, screen=None, grid=None, score=0, win=False, lose=False):
-        self.screen = screen
+    def __init__(self,screen=None, grid=None, score=0, best_score=0, over=False, win=False):
         self.grid = grid
         self.score = score
+        self.over = over
         self.win = win
-        self.lose = lose
-        self.count = count
+        self.screen = screen
+        self.counter = 0
     
+    #print out messages                    
     def cast(self, string):
         self.screen.addstr(string + '\n')
     
+    #draw vertical line to seperate grids and fill numbers into grids
     def draw_row(self, row):
         self.cast(''.join('|{: ^4}'.format(num) if num > 0 else '|   ' for num in row) + '|')
 
+    #horizontal line, show scores and integrate                    
     def draw(self):
         self.screen.clear()
         self.cast('SCORE:' + str(self.score))
