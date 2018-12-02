@@ -208,6 +208,14 @@ class main(stdscr):
     def screen(self):
         return Screen(screen=self.stdscr, score=self.score, grid=self.grid, win=self.win, over=self.over)
     
+    def move(self, direction):
+        if self.can_move(direction):
+            getattr(self.grid, 'move_' + direction,self)()
+            self.grid.spawn()
+            return True
+        else:
+            return False                 
+                        
     def canmove(self, direction):
         
     def lose(self):
