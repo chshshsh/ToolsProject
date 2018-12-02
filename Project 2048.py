@@ -136,7 +136,15 @@ class Grid(object):
                 check = change(i)
                 return check
         return check    
-                        
+    
+    def can_move_left(self):
+        check = False
+        for row in self.cells:
+            if self.row_can_move_left(row):
+                check = self.row_can_move_left(row)
+                return check
+        return check
+    
     def can_move_right(self):
         self.invert()
         can = self.can_move_left()
