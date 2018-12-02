@@ -126,7 +126,7 @@ class Grid(object):
             if row[i] != 0 and row[i + 1] == row[i]:
                 return True
             return False
-        
+   
         #loop through and check all rows in range 
         check = False
         for i in range(len(row) - 1):
@@ -215,12 +215,18 @@ class main(stdscr):
             return True
         else:
             return False                 
-                        
+    
+    @property
+    #find max number in all cells and compare it with win_num
+    def is_win(self):
+        self.win = max(chain(*self.grid.cells)) >= self.win_num
+        return self.win                        
     def canmove(self, direction):
         
     def lose(self):
         #if not canmove
         return 'Game Over!'
+
     
     def stop(self):
         #if win or lose  
