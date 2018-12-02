@@ -176,16 +176,26 @@ class Screen(object):
     
     #draw vertical line to seperate grids and fill numbers into grids
     def draw_row(self, row):
-        self.cast(''.join('|{: ^4}'.format(num) if num > 0 else '|   ' for num in row) + '|')
-
-    #horizontal line, show scores and integrate                    
+        self.cast(''.join('|{: ^5}'.format(num) if num > 0 else '|     ' for num in row) + '|')
+        
+    #horizontal line, show scores and integrate
     def draw(self):
         self.screen.clear()
-        self.cast('SCORE:' + str(self.score))
+        self.cast('SCORE: ' + str(self.score))
         for row in self.grid.cells:
-            self.cast('+----' * self.grid.size + '+')
+            self.cast('*-----' * self.grid.size + '*')
             self.draw_row(row)
-        self.cast('+----' * self.grid.size + '+')
+        self.cast('*-----' * self.grid.size + '*')
+
+        if self.win:
+            self.cast(self.win_string)
+        else:
+            if self.over:
+                self.cast(self.over_string)
+            else:
+                self.cast(self.menu1)
+
+        self.cast(self.menu2)
                          
                       
 class main(object):
