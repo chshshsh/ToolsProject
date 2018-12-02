@@ -77,9 +77,11 @@ class Screen(object):
                          
                       
 class main(stdscr):
-    def init():
-        #initiliza game
-        return 'Game'
+    # could try different win number (such as 16 to win the game faster) 
+    def __init__(self, size=4, win_num=2048):
+        self.size = size
+        self.win_num = win_num
+        self.reset()
     
     def game():
         #Get action
