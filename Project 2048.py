@@ -6,6 +6,7 @@
 
 import random
 import curses
+import time
 from itertools import chain
 
 class Action(object):
@@ -277,6 +278,7 @@ class main(object):
 
     def _restart_or_exit(self):
         self.screen.draw()
+        time.sleep(1)
         return 'init' if self.action.get() == Action.RESTART else 'exit'
 
     def state_win(self):
