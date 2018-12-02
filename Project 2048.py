@@ -223,7 +223,6 @@ class main(object):
     def is_win(self):
         self.win = max(chain(*self.grid.cells)) >= self.win_num
         return self.win                        
-    def canmove(self, direction):
     
     @property
     def is_over(self):
