@@ -53,6 +53,19 @@ class Grid(object):
         (i, j) = random.choice(empty_cells)
         self.cells[i][j] = random.choice([2,4]) #could try different probability to generate 2 or 4
     
+    def transpose(self):
+        new_cells = []
+        for row in zip(*self.cells):
+            new_cells.append(list(row))
+        self.cells = new_cells
+    
+    def invert(self):
+        new_cells = []
+        for row in self.cells:
+            new_cells.append(row[::-1])
+        self.cells = new_cells  
+                        
+    
 
 class Screen(object):
     menu1 = '(W)up (S)down (A)left (D)right'
