@@ -26,9 +26,9 @@ class Action(object):
         self.stdscr = stdscr
     
     #only do next movement until we get input in 'WASDRQwasdrq'
-    def get_actions(self):
+    def get(self):
         i = 'N'
-        if i not in self.actions_dict:
+        while i not in self.actions_dict:
             i = self.stdscr.getch()
         return self.actions_dict[i]
                     
