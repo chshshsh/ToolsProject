@@ -232,5 +232,27 @@ class main(stdscr):
                 return self.over
         return self.over        
     
+    #check possible movement direction
+    def can_move(self, direction):
+        return getattr(self.grid, 'can_move_' + direction)()
 
+    def state_init(self):
+        self.reset()
+        return 'game'
+    
+    #move to next state 
+    def state_game(self):
+        self.screen.draw()
+        action = self.action.get()
+
+        if action == Action.RESTART:
+            return 'init'
+        if action == Action.EXIT:
+            return 'exit'
+        if self.move(action):
+            if self.is_win:
+                return 'win'
+            if self.is_over:
+                return 'over'
+        return 'game'
                    
