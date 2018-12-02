@@ -21,7 +21,7 @@ class Action(object):
     actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
     actions_dict = dict(zip(input_letter, actions * 2)
     
-    def __init__(self,stdscr):
+    def __init__(self, stdscr):
         self.stdscr = stdscr
     
     #only do next movement until we get input in 'WASDRQwasdrq'
@@ -186,7 +186,7 @@ class Screen(object):
         self.cast('+----' * self.grid.size + '+')
                          
                       
-class main(stdscr):
+class main(object):
     # could try different win number (such as 16 to win the game faster) 
     def __init__(self, size=4, win_num=2048):
         self.size = size
