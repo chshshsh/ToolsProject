@@ -135,7 +135,23 @@ class Grid(object):
                 return check
         return check    
                         
-                        
+    def can_move_right(self):
+        self.invert()
+        can = self.can_move_left()
+        self.invert()
+        return can
+
+    def can_move_up(self):
+        self.transpose()
+        can = self.can_move_left()
+        self.transpose()
+        return can
+
+    def can_move_down(self):
+        self.transpose()
+        can = self.can_move_right()
+        self.transpose()
+        return can                  
 
 
 class Screen(object):
