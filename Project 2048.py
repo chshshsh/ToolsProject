@@ -94,9 +94,9 @@ class main(stdscr):
         self.grid.reset() 
                 
     @property
-    def win(self):
-        if any(i >= self.win_value for i in row) for row in self.field
-        return 'You Win!'
+    #make instance of Screen class for display
+    def screen(self):
+        return Screen(screen=self.stdscr, score=self.score, grid=self.grid, win=self.win, over=self.over)
     
     def canmove(self, direction):
         
