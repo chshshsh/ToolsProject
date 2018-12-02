@@ -255,4 +255,14 @@ class main(stdscr):
             if self.is_over:
                 return 'over'
         return 'game'
+
+    def _restart_or_exit(self):
+        self.screen.draw()
+        return 'init' if self.action.get() == Action.RESTART else 'exit'
+
+    def state_win(self):
+        return self._restart_or_exit()
+
+    def state_over(self):
+        return self._restart_or_exit()
                    
