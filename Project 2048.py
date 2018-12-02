@@ -19,6 +19,7 @@ class Action(object):
     #turn user's input into game actions 
     input_letter = [ord(ch) for ch in 'WSADRQwsadrq']
     actions = [UP, DOWN, LEFT, RIGHT, RESTART, EXIT]
+    actions_over = [UP, LEFT, DOWN, RIGHT]
     actions_dict = dict(zip(input_letter, actions * 2)
     
     def __init__(self, stdscr):
@@ -117,6 +118,7 @@ class Grid(object):
         self.move_right()
         self.transpose()
     
+    @staticmethod                   
     # check if it is possible to move left                    
     def row_can_move_left(row):
         #check one row 
