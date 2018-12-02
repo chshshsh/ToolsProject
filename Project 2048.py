@@ -165,10 +165,10 @@ class Grid(object):
 
 
 class Screen(object):
-    menu1 = '(W)up (S)down (A)left (D)right'
-    menu2 = '   (R)Restart (Q)Exit'
-    win_string = 'Congratulations Paul, You Did It!'
-    over_string = 'Sorry Paul, Please Try Again...'
+    menu1 = '\n (W)up (S)down (A)left (D)right'
+    menu2 = '\n   (R)Restart (Q)Exit'
+    win_string = '\nCongratulations Paul, You Did It!'
+    over_string = '\nSorry Paul, Please Try Again...'
     
     def __init__(self,screen=None, grid=None, score=0, best_score=0, over=False, win=False):
         self.grid = grid
