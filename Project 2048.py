@@ -270,10 +270,10 @@ class main(object):
         if action == Action.EXIT:
             return 'exit'
         if self.move(action):
-            if self.is_win:
-                return 'win'
             if self.is_over:
                 return 'over'
+            if self.is_win:
+                return 'win'
         return 'game'
 
     def _restart_or_exit(self):
