@@ -83,11 +83,15 @@ class main(stdscr):
         self.win_num = win_num
         self.reset()
     
-    def game():
-        #Get action
-        #game interface 
-        #move and merge
-        #check win or lose 
+    #build the game reset function for game initialization
+    def reset(self):
+        self.state = 'init'
+        self.win = False
+        self.over = False
+        self.score = 0
+        #make instance of Grid class
+        self.grid = Grid(self.size,self)
+        self.grid.reset() 
                 
     @property
     def win(self):
