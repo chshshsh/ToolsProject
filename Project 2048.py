@@ -278,13 +278,14 @@ class main(object):
 
     def _restart_or_exit(self):
         self.screen.draw()
-        time.sleep(1)
         return 'init' if self.action.get() == Action.RESTART else 'exit'
 
     def state_win(self):
-        return self._restart_or_exit()
+        self.screen.draw()
+        return 'game'
 
     def state_over(self):
+        time.sleep(1)
         return self._restart_or_exit()
     
     def __call__(self, stdscr):
