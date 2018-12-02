@@ -93,6 +93,49 @@ class Grid(object):
                         new_row.append(row[i])
             return new_row
         return tighten(merge(tighten(row)))
+    
+    #base movement
+    def move_left(self):
+        new = []
+        for row in self.cells:
+            new.append(self.move_row_left(row))
+        self.cells = new
+
+    #transform other movements into base movement and then reverse back
+    def move_right(self):
+        self.invert()
+        self.move_left()
+        self.invert()
+
+    def move_up(self):
+        self.transpose()
+        self.move_left()
+        self.transpose()
+
+    def move_down(self):
+        self.transpose()
+        self.move_right()
+        self.transpose()
+    
+    # check if it is possible to move left                    
+    def row_can_move_left(row):
+        #check one row 
+        def change(i):
+            if row[i] == 0 and row[i + 1] != 0:
+                return True
+            if row[i] != 0 and row[i + 1] == row[i]:
+                return True
+            return False
+        
+        #loop through and check all rows in range 
+        check = False
+        for i in range(len(row) - 1):
+            if change(i):
+                check = change(i)
+                return check
+        return check    
+                        
+                        
 
 
 class Screen(object):
