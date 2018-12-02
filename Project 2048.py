@@ -265,4 +265,13 @@ class main(stdscr):
 
     def state_over(self):
         return self._restart_or_exit()
-                   
+    
+    def __call__(self, stdscr):
+        curses.use_default_colors()
+        self.stdscr = stdscr
+        self.action = Action(stdscr)
+        while self.state != 'exit':
+            self.state = getattr(self, 'state_' + self.state)()
+            
+if __name__ == '__main__':
+    curses.wrapper(main())                   
