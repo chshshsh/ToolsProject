@@ -26,5 +26,5 @@ The game objective is:
 ## Run the File
 
 > - Please download the .py file and run it on Terminal using command code: 'python3 Project/ 2048.py'
-> - Packages required: random, curses, from itertools import chain
+> - Packages required: random, curses, time, from itertools import chain
 > - Enjoy the game!
