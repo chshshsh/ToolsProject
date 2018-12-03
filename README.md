@@ -6,10 +6,10 @@
 > -  Edison Wang         (yw3102)                 
 
 # Desciption
-> - In this project, we created the game of 2048 using OOP as our main tool to contruct main structure, we took advantage of the packages we learned such as time and random etc.   
+> - We created game of 2048 using OOP as our main tool to contruct main structure. We took advantage of the packages we learned such as time, random and etc.   
 
 
-## Intro
+## Intro to the Game
 
 2048 is a single-player sliding block puzzle game, played on a gray 4×4 grid, with numbered tiles that slide smoothly when a player moves them using the four arrow keys
 
